@@ -19,15 +19,31 @@ html{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+
 @mixin flexDirection($pad: 0rem){
     display:flex;
     flex-direction: column;
     padding: $pad;
 }
+@mixin para($color: #9C9B98){
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: $color;
+    line-height: 140%;
+}
+@mixin heading() {
+    font-size: 3.4rem;
+    font-weight: 200;
+    line-height: 105%;
+    text-transform: uppercase;
+}
+
+
 
 main{
     width: 100%;
     @include flexDirection(1rem);
+    
     align-items: center;
 
     section.view1{
@@ -53,24 +69,21 @@ main{
             gap: 5rem;
 
             p{
-                font-weight: 600;
-                font-size: 1.3rem;
-                color: #F4F2ED;
+                @include para();
+                color: #F4F2ED
             }
 
             div.inside-bottom{
                 @include flexDirection(0);
                 gap: 1.3rem;
+
                 h4{
-                    font-size: 3.4rem;
-                    font-weight: 200;
-                    line-height: 105% ;
-                    text-transform: uppercase;
+                    @include heading();
 
                 }
 
                 p{
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     color: #9C9B98;
                     line-height: 140%;
                     max-width: 738px;
@@ -100,6 +113,168 @@ main{
 
         }
     }
+
+    section.view2{
+        max-width: 2000px;
+       @include flexDirection();
+       gap: 1rem;
+
+        div.part1{
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin: 2rem 0;
+
+            div.first-half, div.second-half{
+                display: flex;
+                justify-content: space-around;
+                gap: 3rem;
+                
+            }
+
+            div.elem{
+                display: flex;
+                gap: .5rem;
+                flex-direction: column;
+                align-items: center;
+
+                p{
+                    text-transform: uppercase;
+                    font-weight: 200;
+                    font-size: 1rem;
+                    color: #f4f2edc7;
+                }
+                span{
+                    font-size: 3.4rem;
+                    font-weight: 200;
+                    line-height: 105% ;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        div.part2, div.part3{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            div.top{
+                img{
+                    width: 100%;
+                    object-fit: contain;
+                    border-radius: 1rem;
+                }
+            }
+            
+            div.bottom{
+                background-color: #1E1E1E;
+                padding: 2rem;
+                border-radius: 1rem;
+                
+                span{
+                    display: inline-block;
+                    text-transform: uppercase;
+                    font-family: monospace;
+                    font-size: 1rem;
+                    color: white;
+                    margin-bottom: 5rem;
+                }
+
+                h4{
+                    @include heading();
+                    margin-bottom: 2rem;
+                }
+
+                p{
+                    @include para();
+                }
+            }
+        }
+
+    }
+
+    section.view3{
+        width: 100%;
+        max-width: 2000px;
+       @include flexDirection(0);
+       gap: 1rem;
+
+        header h1{
+            @include heading();
+            padding: 1rem 0 1rem 1rem;
+        }
+
+        .team-wrapper{
+            @include flexDirection(0);
+            gap: 1rem;
+        }
+
+
+
+        .wrapper{
+            padding-right: 1rem;
+            display: flex;
+            justify-content: flex-end;
+
+            div {
+                    height: 2.7rem;
+                    width: 2.7rem;
+                    border: 1px solid white;
+                    border-radius: 50%;
+                    margin-left: .3rem;
+                    object-fit: cover;
+                    overflow: hidden;
+                    // opacity: .8;
+
+                    img{
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+        }
+        
+        .name{
+            border-radius: .4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.212);
+            padding: 1rem;
+            text-transform: uppercase;
+            backdrop-filter: blur(1px);
+
+            h3{
+                font-size: 1.5rem;
+                font-weight: 200;
+            }
+
+            span{
+                font-family: monospace;
+                font-weight: 600;
+            }
+
+        }
+
+
+       
+
+        div.part1, div.part2, div.part3{
+            border-radius: 1rem;
+            @include flexDirection(1rem);
+            justify-content: space-between;
+            background-image: url(./images/img2.webp);
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 1/1;
+        }
+
+        div.part2{
+            background-image: url(images/img3.webp);
+        }
+        div.part3{
+            background-image: url(images/img4.webp);
+        }
+    }
 }
 
 @media (min-width:900px){
@@ -112,11 +287,70 @@ main{
 
             .top img{
                 width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             div.bottom{
                 justify-content: space-between;
                 gap: 0rem;
+
+            }
+        }
+
+        section.view2{
+
+            div.part1{
+                flex-direction: row;
+
+                div.first-half, div.second-half{
+                    justify-content: space-around;
+                    width: 50%;
+                }
+            }
+
+            div.part2{
+                flex-direction: row-reverse;
+
+                .top,.bottom{
+                    width: 50%;
+                }
+
+                div.top img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                
+            }
+
+            div.part3{
+                flex-direction: row;
+
+                .top, .bottom{
+                    width: 50%;
+                }
+
+                div.top img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        section.view3{
+            .team-wrapper{
+                flex-direction: row;
+            }
+
+            .team-wrapper>div{
+                flex-grow: 1;
+            }
+
+            .wrapper>div{
+                width: 10%;
+                height: 80%;
             }
         }
     }
