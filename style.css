@@ -229,15 +229,25 @@ main section.view3 div.part1, main section.view3 div.part2, main section.view3 d
   flex-direction: column;
   padding: 1rem;
   justify-content: space-between;
+  position: relative;
+  aspect-ratio: 1/1;
+  background-color: rgba(0, 0, 0, 0.2078431373);
+}
+main section.view3 div.part1::before, main section.view3 div.part2::before, main section.view3 div.part3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
   background-image: url(./images/img2.webp);
   background-size: cover;
-  background-position: center;
-  aspect-ratio: 1/1;
 }
-main section.view3 div.part2 {
+main section.view3 div.part2::before {
   background-image: url(images/img3.webp);
 }
-main section.view3 div.part3 {
+main section.view3 div.part3::before {
   background-image: url(images/img4.webp);
 }
 
